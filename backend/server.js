@@ -1,8 +1,21 @@
+const dotenv = require("dotenv");
 const express = require('express');
+const {connectDB} = require("./config/connection");
+
+const blogRoutes = require("./routes/blogRoutes")
+
 const app = express();
 
+dotenv.config()
+
+app.use(express.json())
+
+app.use(blogRoutes)
+
 app.get("/", (req, res) => {
-    res.send("api running");
+    res.send("Backend server is running, fikr not")
 })
 
-app.listen(4000);
+connectDB()
+
+app.listen(process.env.PORT || 5000, console.log(`Server running on ${process.env.PORT}`));
