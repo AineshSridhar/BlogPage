@@ -1,9 +1,9 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
-const jwt = require('jwt');
+const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 const User = require("../models/user");
-const react = require('react');
+const User = require('../models/user');
 
 dotenv.config();
 const router = express.Router();
@@ -29,5 +29,24 @@ router.post('/register', async(req, res) => {
 });
 
 router.post('/login', async(req, res) => {
-    
-})
+    try{
+        const{email, password} = req.body;
+        const user = await User.findOne({email});
+        if (!user){
+            return res.status(400).json({message: "Invalid credentials"});
+        }
+        
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch){
+            return res.status(400).json({message: "Invalid credentials"});
+        }
+        const token = jwt.sign({userId: user._id}, JWT_SECRET, {expiresIn: "1h"});
+        res.status(200).json({message: "Login successful", token});
+    } catch (error){
+        console.error("Error logging in: ", error);
+        res.status(500).json({message: "Error logging in"});
+    }
+});
+
+module.exports = router;
+
