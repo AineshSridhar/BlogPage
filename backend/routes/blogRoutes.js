@@ -2,8 +2,9 @@ const express = require('express');
 const router = express.Router();
 const Blog = require("../models/blogs");
 const User = require("../models/user");
+const verifyAuth = require('../middleware/authMiddleware');
 
-router.post('/add-post', async(req, res) => {
+router.post('/add-post', verifyAuth, async(req, res) => {
     console.log(req.user)
     try{
         console.log(req.user);
@@ -56,9 +57,9 @@ router.put('/update/:id', async(req, res) => {
     }
 });
 
-router.delete('delete/:id', async(req, res) => {
+router.delete('/delete/:id', async(req, res) => {
     try{
-        const blog = Blog.findByIdAndDelete(req.params.id);
+        const blog = await Blog.findByIdAndDelete(req.params.id);
         if (!blog){
             return res.status(404).json({message: "Blog deleted successfully"});
         }
