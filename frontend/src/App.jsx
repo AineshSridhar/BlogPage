@@ -2,9 +2,12 @@ import React from 'react'
 
 const App = () => {
   return (
-    <div className='text-3xl'>
-      Blogging page
-    </div>
+    <Router>
+      <Routes>
+        <Route path = "/" element = {<Home/>}/>
+        <Route path = "/blog/:id" element = {<BlogDetails />} />
+      </Routes>
+    </Router>
   )
 }
 
