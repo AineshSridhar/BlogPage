@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const API_URL = "http://localhost:7000/api"
+
 export async function fetchBlogs({search =  "", category = ""} = {}){
     try{
         const params = {};
