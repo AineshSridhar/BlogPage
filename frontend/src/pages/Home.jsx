@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { fetchBlogs } from "../api/blogs";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [blogs, setBlogs] = useState([]);
@@ -19,7 +20,12 @@ const Home = () => {
   }, [search, category]);
 
   return (
-    <div className="p-6">
+    <div className="">
+      <div className="bg-green-200 flex justify-end p-4">
+        <Link to="/login" className="">
+          Login
+        </Link>
+      </div>
       <h1 className="text-3xl font-bold">Blogs</h1>
 
       {/* Search and filter */}
