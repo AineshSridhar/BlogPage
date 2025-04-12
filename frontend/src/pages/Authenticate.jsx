@@ -1,24 +1,32 @@
 import React, { useState } from 'react'
+import {useNavigate} from 'react-router-dom'
+import axios from "axios"
 
 const Authenticate = () => {
+    const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("username");
+        console.log("username", username);
         try{
             const response = await axios.post("http://localhost:7000/login", {
                 username: username,
                 password: password,
             });
             console.log('Login successful', response.data);
+            localStorage.setItem('token', response.data.token);
+            if (!token){
+                navigate('/login');
+            }
+            navigate('/dashboard');
         } catch (error){
             console.error("Login failed: ", error.response?.data || error.message);
         }
     };
 
-  return (
+  return ( 
     <div>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4 p-4">
         <h4>Enter Username: </h4>
