@@ -20,13 +20,13 @@ const Home = () => {
   }, [search, category]);
 
   return (
-    <div className="">
-      <div className="bg-green-200 flex justify-end p-4">
+    <div className="px-20 mt-10">
+      {/* <div className="bg-green-200 flex justify-end p-4">
         <Link to="/login" className="">
           Login
         </Link>
-      </div>
-      <h1 className="text-3xl font-bold">Blogs</h1>
+      </div> */}
+      <h1 className="text-2xl font-bold text-left">Search blogs of your interest</h1>
 
       {/* Search and filter */}
       <div className="flex gap-4 mb-6">
