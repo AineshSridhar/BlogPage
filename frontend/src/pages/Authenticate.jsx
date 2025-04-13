@@ -16,7 +16,8 @@ const Authenticate = () => {
                 password: password,
             });
             console.log('Login successful', response.data);
-            localStorage.setItem('token', response.data.token);
+            const token = response.data.token;
+            localStorage.setItem('token', token);
             if (!token){
                 navigate('/login');
             }
@@ -27,13 +28,16 @@ const Authenticate = () => {
     };
 
   return ( 
-    <div>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4 p-4">
-        <h4>Enter Username: </h4>
-        <input type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Enter Username..." className = "border p-2"/>
-        <h4>Enter Password: </h4>
-        <input type="password" value={password} onChange = {e => setPassword(e.target.value)} placeholder="Enter Password..." className = "border p-2"/>
-
+    <div className='flex justify-center items-center h-screen'>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4 p-4 w-150">
+        <div className="flex flex-col">
+          <h4 className="w-32 text-left py-2">Enter Username: </h4>
+          <input type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Enter Username..." className = "border p-2"/>
+        </div>
+        <div className="flex flex-col">
+          <h4 className="text-left py-2">Enter Password: </h4>
+          <input type="password" value={password} onChange = {e => setPassword(e.target.value)} placeholder="Enter Password..." className = "border p-2"/>
+        </div>
         <button type="submit" className="bg-blue-500 text-white p-2 rounded">Login</button>
       </form>
     </div>
