@@ -12,7 +12,7 @@ const Create = () => {
         e.preventDefault();
         try{
             await axios.post('http://localhost:7000/api/blogs/add-post', 
-                { title, content },
+                { title, content, category },
                 {
                     headers:{
                         Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -36,10 +36,12 @@ const Create = () => {
                 <label htmlFor="title" className="">Title: </label>
                 <input type="text" name="title" value={title} className="px-2 py-1 w-100" placeholder="Enter title..." onChange={(e) => setTitle(e.target.value)}></input>
             </div>
-            <div className="my-4">
+            <div className="mb-4">
                 <label htmlFor="category" className="">Category: </label>
-                <select value={category} onChange={(e) => setTitle(e.target.value)}>
-                    <option></option>
+                <select value={category} onChange={(e) => setCategory(e.target.value)} className="text-gray-500 text-xl">
+                    <option value="">Select Category</option>
+                    <option value="Lifestyle">Lifestyle</option>
+                    <option value="Tech">Tech</option>
                 </select>
             </div>
             <label htmlFor="content" className="mb-2">Content: </label>

@@ -46,12 +46,12 @@ const Home = () => {
       <div>
         <div className="grid gap-4">
           {blogs.map((blog) => (
-            <div key={blog._id} className="p-4 border rounded-lg">
+            <div key={blog._id} className="p-4 border rounded-lg text-left">
               <h2 className="text-xl font-bold">{blog.title}</h2>
-              <p>{blog.content}</p>
-              <a href ={`blog/${blog._id}`} className="text-bold-500">
-              Read more
-              </a>
+              <p>{blog.content}
+              <Link to={`blog/${blog._id}`} className="text-bold-500">
+                Read more
+              </Link></p>
             </div>
           ))}
         </div>
