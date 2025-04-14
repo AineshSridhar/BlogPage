@@ -26,7 +26,7 @@ const Home = () => {
           Login
         </Link>
       </div> */}
-      <h1 className="text-2xl font-bold text-left">Search blogs of your interest</h1>
+      <h1 className="text-2xl font-bold text-left mb-5">Search blogs of your interest</h1>
 
       {/* Search and filter */}
       <div className="flex gap-4 mb-6">
