@@ -57,7 +57,7 @@ const Dashboard = () => {
                 <button className="bg-red-600 text-white py-1 px-3 rounded cursor-pointer" onClick={() => handleDelete(blog._id)}>Delete</button>
               </div>          
             </div>
-            <p>{blog.content}</p>
+            <p>{blog.about}</p>
           </div>
         ))}
       </div>

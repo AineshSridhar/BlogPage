@@ -21,6 +21,7 @@ const Authenticate = () => {
             if (!token){
                 navigate('/login');
             }
+            window.dispatchEvent(new Event("storage"));
             navigate('/dashboard');
         } catch (error){
             console.error("Login failed: ", error.response?.data || error.message);

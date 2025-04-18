@@ -8,7 +8,7 @@
         try {
             console.log("Authenticated user:", req.user); 
     
-            const { title, content, category } = req.body;  
+            const { title, about, content, category } = req.body;  
             const authorId = req.user.userId;
     
             console.log("Extracted authorId:", authorId); 
@@ -21,6 +21,7 @@
             const blog = new Blog({
                 title,
                 author_name: user.username,
+                about,
                 content,
                 category, 
                 authorId
@@ -46,10 +47,10 @@
 
     router.put('/update/:id', async(req, res) => {
         try {
-            const { title, content, category } = req.body;  // ✅ Include category
+            const { title, content, category } = req.body;
             const blog = await Blog.findByIdAndUpdate(
                 req.params.id, 
-                { title, content, category },  // ✅ Update category too
+                { title, about, content, category }, 
                 { new: true }
             );
             if (!blog) {
