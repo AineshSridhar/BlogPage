@@ -38,8 +38,8 @@ const Dashboard = () => {
   return (
     <div className="flex space-x-8 mt-10 px-20">
       <div className="w-1/4 bg-black text-white rounded-lg">
-        <img src="/Dp1.jpg" className="w-64 object-cover rounded"></img>
-        <h2 className=""></h2>
+        <img src="/Dp1.jpg" className="w-100 object-cover rounded"></img>
+        <h2 className="">{authorI}</h2>
         <p></p>
         
       </div>

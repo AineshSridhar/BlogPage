@@ -18,6 +18,7 @@ const Authenticate = () => {
             console.log('Login successful', response.data);
             const token = response.data.token;
             localStorage.setItem('token', token);
+            localStorage.setItem("authorId", res.data.user._id);
             if (!token){
                 navigate('/login');
             }
