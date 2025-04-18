@@ -18,7 +18,11 @@ const Dashboard = () => {
   }
 
     useEffect(() => {
-        fetchMyBlogs();
+      const authorDetails = () => {
+        const response = await axios.get("http://localhost:7000/user")
+      }
+      authorDetails();
+      fetchMyBlogs();
     }, [])
 
     const handleDelete = async(id) => {
