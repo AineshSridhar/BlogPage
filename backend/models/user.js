@@ -8,13 +8,10 @@ const userSchema = mongoose.Schema({
     password: {
         type: String,
         required: true
-    },
-    desc: {
-        type:String
-    },
-    socialmedia: {
-        type:String
     }
+    // desc: {
+    //     type:String
+    // }
 })
 
 const User = mongoose.model('User', userSchema);

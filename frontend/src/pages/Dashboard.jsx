@@ -18,8 +18,9 @@ const Dashboard = () => {
   }
 
     useEffect(() => {
-      const authorDetails = () => {
-        const response = await axios.get("http://localhost:7000/user")
+      const authorDetails = async() => {
+        const response = await axios.get("http://localhost:7000/user");
+
       }
       authorDetails();
       fetchMyBlogs();
